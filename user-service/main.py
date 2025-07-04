@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+# Test comment
 app = FastAPI()
 
 # Dummy data

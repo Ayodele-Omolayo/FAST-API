@@ -18,7 +18,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push
       run: |
-        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker-compose build order-service
+        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker compose build order-service
         docker tag ${{ secrets.DOCKER_USERNAME }}/order-service:latest ${{ secrets.DOCKER_USERNAME }}/order-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/order-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/order-service:latest

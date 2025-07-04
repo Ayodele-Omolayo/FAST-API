@@ -18,7 +18,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push
       run: |
-        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker-compose build notification-service
+        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker compose build notification-service
         docker tag ${{ secrets.DOCKER_USERNAME }}/notification-service:latest ${{ secrets.DOCKER_USERNAME }}/notification-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/notification-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/notification-service:latest

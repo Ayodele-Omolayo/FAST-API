@@ -18,7 +18,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push
       run: |
-        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker-compose build inventory-service
+        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker compose build inventory-service
         docker tag ${{ secrets.DOCKER_USERNAME }}/inventory-service:latest ${{ secrets.DOCKER_USERNAME }}/inventory-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/inventory-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/inventory-service:latest

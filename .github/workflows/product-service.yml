@@ -18,6 +18,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/product-service:${{ github.sha }} -t ${{ secrets.DOCKER_USERNAME }}/product-service:latest -f Dockerfile ./product-service
+        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker-compose build product-service
+        docker tag ${{ secrets.DOCKER_USERNAME }}/product-service:latest ${{ secrets.DOCKER_USERNAME }}/product-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/product-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/product-service:latest

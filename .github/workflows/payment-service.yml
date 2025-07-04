@@ -18,6 +18,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build and push
       run: |
-        docker build -t ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }} -t ${{ secrets.DOCKER_USERNAME }}/payment-service:latest -f Dockerfile ./payment-service
+        DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }} docker-compose build payment-service
+        docker tag ${{ secrets.DOCKER_USERNAME }}/payment-service:latest ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/payment-service:${{ github.sha }}
         docker push ${{ secrets.DOCKER_USERNAME }}/payment-service:latest

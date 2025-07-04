@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  user-service:
+    image: ${DOCKER_USERNAME:-your-username}/user-service:latest
+    ports:
+      - "8001:8000"
+    container_name: user-service
+
+  product-service:
+    image: ${DOCKER_USERNAME:-your-username}/product-service:latest
+    ports:
+      - "8002:8000"
+    container_name: product-service
+
+  order-service:
+    image: ${DOCKER_USERNAME:-your-username}/order-service:latest
+    ports:
+      - "8003:8000"
+    container_name: order-service
+
+  payment-service:
+    image: ${DOCKER_USERNAME:-your-username}/payment-service:latest
+    ports:
+      - "8004:8000"
+    container_name: payment-service
+
+  inventory-service:
+    image: ${DOCKER_USERNAME:-your-username}/inventory-service:latest
+    ports:
+      - "8005:8000"
+    container_name: inventory-service
+
+  notification-service:
+    image: ${DOCKER_USERNAME:-your-username}/notification-service:latest
+    ports:
+      - "8006:8000"
+    container_name: notification-service
+
+networks:
+  default:
+    name: microservices-network

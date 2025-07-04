@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from datetime import datetime
 
+# FastAPI application instance
 app = FastAPI()
 
 # Dummy data

@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+# FastAPI application instance
 app = FastAPI()
 
 # Dummy data
